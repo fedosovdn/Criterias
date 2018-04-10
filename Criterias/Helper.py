@@ -13,5 +13,4 @@ class Helper:
         for elem in array:
             #result.append(format(elem, f".{digitCount}f"))
             result.append(round(Decimal(elem), digitCount))
-            #result.append(round(elem, digitCount))
         return result
