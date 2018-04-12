@@ -1,4 +1,6 @@
 from scipy.stats import norm
+from scipy.stats import kstwobign
+import numpy as np
 import Smirnov as sm
 import LehmanRosenblatt as lr
 import AndersonDarling as ad
@@ -20,9 +22,9 @@ def EmpiricFunctionOfCriteria(n, N, criteria, roundingCount = -1):
 
     return ECDF(stats)
 
-def ShowAllEmpiricFunctionsOfCriteria(n, N, criteria):
+def ShowAllEmpiricFunctionsOfSmirnovCriteria(n, m, N, criteria):
     roundingDigitsCounts = [0, 1, 2]  # количество знаков округления значений выборок
-    descriptions = ('-', '0', '1', '2')
+    descriptions = ('K-S', '-', '0', '1', '2')
     ecdfs = []
     stats = [[]]
     for digit in roundingDigitsCounts:
@@ -30,7 +32,7 @@ def ShowAllEmpiricFunctionsOfCriteria(n, N, criteria):
 
     for i in range(N):
         x1 = norm.rvs(loc=0, scale=1, size=n)
-        x2 = norm.rvs(loc=0, scale=1, size=n)
+        x2 = norm.rvs(loc=0, scale=1, size=m)
         stats[0].append(criteria.Result2Samples(x1, x2).statistic)
         for index, digit in enumerate(roundingDigitsCounts):
             x1_rounded = Helper.RoundingArray(x1, digit)
@@ -38,11 +40,46 @@ def ShowAllEmpiricFunctionsOfCriteria(n, N, criteria):
             stats[index+1].append(criteria.Result2Samples(x1_rounded, x2_rounded).statistic)
 
     lines = []
+    en = np.sqrt(n * m / float(n + m))
+    allstats = sum(stats, [])
+    x = np.linspace(min(allstats), max(allstats), N)
+    lines.append(plt.plot(x, kstwobign.cdf((en + 0.12 + 0.11 / en)*x)))
     for stat in stats:
         ecdf = ECDF(stat)
         ecdfs.append(ecdf)
         lines.append(plt.plot(ecdf.x, ecdf.y))
     plt.legend(labels = descriptions)
+    plt.show()
+
+    return ecdfs
+
+def ShowAllEmpiricFunctionsOfLehmRosCriteria(n, m, N, criteria):
+    roundingDigitsCounts = [0, 1, 2]  # количество знаков округления значений выборок
+    descriptions = ('L-R', '-', '0', '1', '2')
+    ecdfs = []
+    stats = [[]]
+    for digit in roundingDigitsCounts:
+        stats.append([])
+
+    for i in range(N):
+        x1 = norm.rvs(loc=0, scale=1, size=n)
+        x2 = norm.rvs(loc=0, scale=1, size=m)
+        stats[0].append(criteria.Result2Samples(x1, x2).statistic)
+        for index, digit in enumerate(roundingDigitsCounts):
+            x1_rounded = Helper.RoundingArray(x1, digit)
+            x2_rounded = Helper.RoundingArray(x2, digit)
+            stats[index+1].append(criteria.Result2Samples(x1_rounded, x2_rounded).statistic)
+
+    lines = []
+    allstats = sum(stats, [])
+    x = np.linspace(min(allstats), max(allstats), N)
+    #lines.append(plt.plot(x, lr.LehmanRosenblattCriteria.a1(x)))
+    lines.append(plt.plot(x, lr.LehmanRosenblattCriteria.GetStatisticDistribution(x)))
+    for stat in stats:
+        ecdf = ECDF(stat)
+        ecdfs.append(ecdf)
+        lines.append(plt.plot(ecdf.x, ecdf.y))
+    plt.legend(labels=descriptions)
     plt.show()
 
     return ecdfs
@@ -87,8 +124,13 @@ def SmirnovEmpiricPlot():
 
 def SmirnovEmpiricPlots():
     s_c = sm.SmirnovCriteria()
-    ecdf = ShowAllEmpiricFunctionsOfCriteria(100, 100, s_c)
+    ecdf = ShowAllEmpiricFunctionsOfSmirnovCriteria(100, 100, 100, s_c)
+
+def LehmRosEmpiricPlots():
+    lr_c = lr.LehmanRosenblattCriteria()
+    ecdf = ShowAllEmpiricFunctionsOfLehmRosCriteria(100, 100, 100, lr_c)
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
-SmirnovEmpiricPlots()
+#SmirnovEmpiricPlots()
+LehmRosEmpiricPlots()
