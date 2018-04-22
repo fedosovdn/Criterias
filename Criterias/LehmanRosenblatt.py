@@ -1,8 +1,9 @@
 import numpy as np
 from Helper import Helper
 from IHaveStatistic import IHaveSatistic
-from scipy.special import iv, gamma
-from mpmath import nsum, inf, exp, sqrt
+from scipy.special import iv
+from mpmath import nsum, inf, exp, gamma
+from math import sqrt
 
 import math
 
@@ -50,27 +51,8 @@ class LehmanRosenblattCriteria:
 
         result = []
         for stat in stats:
-            sum = nsum(lambda j: a1(j), [0, inf])
+            sum = float(nsum(lambda j: a1(j), [0, inf]))
 
             st = (1 / sqrt(2 * stat))
             result.append(st*sum)
-        return result
-
-    @staticmethod
-    def a1(stats):
-        v = 0.25
-
-        result = []
-        for s in stats:
-            a1 = 0
-            for i in range(1000):
-                z = (4 * i + 1) * (4 * i + 1) / 16.0 / s
-                tmp = math.gamma(i + 0.5) / math.gamma(0.5) / math.gamma(i + 1)
-                tmp = tmp * math.exp(-z) * math.sqrt(4 * i + 1)
-                tmp = tmp * (iv(-v, z) - iv(v, z))
-                if (tmp < 0.000000000001):
-                    break
-                a1 = a1 + tmp
-                a1 = a1 / math.sqrt(2 * s)
-            result.append(a1)
         return result
