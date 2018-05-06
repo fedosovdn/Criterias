@@ -31,10 +31,11 @@ class LehmanRosenblattCriteria:
             elem = X2[i]
             sum2 += pow(self.rangOfRepeatingElems(dataAll, elem) - i, 2)
 
-        stat = 1/(m*n*(sum0)) * (n * sum2 + m * sum1) - (4*m*n - 1) / (6 * sum0)
-        return IHaveSatistic(stat)
+        stat = (n * sum2 + m * sum1)/(m*n*sum0) - (4*m*n - 1) / (6 * sum0)
+        return IHaveSatistic(stat if stat != 0 else 1E-15)#иногда статистика получается равна 0, не должно быть такого
+        #return IHaveSatistic(stat)
 
-    ##Индекс повторяющихся элементов
+    #Индекс повторяющихся элементов
     def rangOfRepeatingElems(self, variationalSeries, value):
         first = variationalSeries.index(value)
         last = Helper.GetLastIndexOf(variationalSeries, value)

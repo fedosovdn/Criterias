@@ -60,14 +60,21 @@ def SmirnovEmpiricPlot():
     plt.show()
 
 def SmirnovEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(20, 30, 100)
+    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(1000, 1000, 16600)
 
 def LehmRosEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(30, 20, 16600)
+    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(20, 30, 16600)
+
+def ADStatistics():
+    ad_c = ad.AndersonDarlingCriteria()
+    x1 = norm.rvs(loc=0, scale=1, size=20)
+    x2 = norm.rvs(loc=0, scale=1, size=20)
+    ad_c.Result2Samples(x1, x2)
 
 
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
 #SmirnovEmpiricPlots()
-LehmRosEmpiricPlots()
+#LehmRosEmpiricPlots()
+ADStatistics()
