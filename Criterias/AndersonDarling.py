@@ -1,5 +1,9 @@
 from scipy import stats
 import numpy as np
+import scipy.integrate as integrate
+from math import sqrt, pi
+from mpmath import nsum, inf, exp, gamma
+from IHaveStatistic import IHaveSatistic
 
 
 class AndersonDarlingCriteria:
@@ -32,4 +36,23 @@ class AndersonDarlingCriteria:
 
             sum += pow((sumOfX1*N - m*(i+1)), 2) / ((i+1)*(N-i-1))
 
-        return sum/m*n
+        return IHaveSatistic(sum/(m*n))
+
+    @staticmethod
+    def GetStatisticDistribution(stats):
+        def a2(jj):
+            j = float(jj)
+            temp = pow((4.0*j + 1), 2)
+            temp2 = 8*stat
+            res = gamma(j + 0.5)*(4.0*j + 1)/(gamma(0.5)*gamma(j + 1.0))
+            res *= exp(-temp*pi*pi/temp2)
+            res *= integrate.quad(lambda y: exp((stat / (8*(y*y+1))) - temp*pi*pi*y*y/temp2), 0, np.inf)[0]
+            return pow(-1, j) * res
+
+        result = []
+        for stat in stats:
+            sum = float(nsum(lambda j: a2(j), [0, inf]))
+
+            st = sqrt(2*pi) / stat
+            result.append(st*sum)
+        return result

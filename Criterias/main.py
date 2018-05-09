@@ -65,11 +65,8 @@ def SmirnovEmpiricPlots():
 def LehmRosEmpiricPlots():
     shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(20, 30, 16600)
 
-def ADStatistics():
-    ad_c = ad.AndersonDarlingCriteria()
-    x1 = norm.rvs(loc=0, scale=1, size=20)
-    x2 = norm.rvs(loc=0, scale=1, size=20)
-    ad_c.Result2Samples(x1, x2)
+def ADEmpiricPlots():
+    shower.ShowAllEmpiricFunctionsOfADCriteria(20, 30, 16600)
 
 
 
@@ -77,4 +74,4 @@ def ADStatistics():
 #SmirnovEmpiricPlot()
 #SmirnovEmpiricPlots()
 #LehmRosEmpiricPlots()
-ADStatistics()
+ADEmpiricPlots()

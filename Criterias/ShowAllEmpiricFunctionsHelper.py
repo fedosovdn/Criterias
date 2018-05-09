@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from statsmodels.distributions.empirical_distribution import ECDF
 import LehmanRosenblatt as lr
 import Smirnov as sm
+import AndersonDarling as ad
 
 
 class ShowAllEmpiricFunctionsHelper:
@@ -23,6 +24,13 @@ class ShowAllEmpiricFunctionsHelper:
         criteria = lr.LehmanRosenblattCriteria()
         func = lambda x: lr.LehmanRosenblattCriteria.GetStatisticDistribution(x)
         plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'L-R', func)
+        plt.show()
+
+    @staticmethod
+    def ShowAllEmpiricFunctionsOfADCriteria(n, m, N):
+        criteria = ad.AndersonDarlingCriteria()
+        func = lambda x: ad.AndersonDarlingCriteria.GetStatisticDistribution(x)
+        plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'A-D', func)
         plt.show()
 
     @staticmethod

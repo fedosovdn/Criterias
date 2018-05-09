@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="79" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="278">
+              <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -26,8 +26,8 @@
       <file leaf-file-name="ShowAllEmpiricFunctionsHelper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ShowAllEmpiricFunctionsHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="50" column="41" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="41" />
+            <state relative-caret-position="167">
+              <caret line="78" column="50" lean-forward="true" selection-start-line="78" selection-start-column="50" selection-end-line="78" selection-end-column="50" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -38,8 +38,8 @@
       <file leaf-file-name="LehmanRosenblatt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LehmanRosenblatt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="-351">
+              <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="26" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -47,13 +47,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndersonDarling.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AndersonDarling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndersonDarling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+            <state relative-caret-position="136">
+              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
+                <element signature="e#144#173#0" />
+                <element signature="e#221#258#0" />
               </folding>
             </state>
           </provider>
@@ -70,7 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>index</find>
       <find>ShowAllEmpiricFunctionsOfCriteria</find>
       <find>exp</find>
       <find>sum</find>
@@ -82,6 +83,7 @@
       <find>set</find>
       <find>enumer</find>
       <find>enumerate</find>
+      <find>index</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -92,8 +94,8 @@
         <option value="$PROJECT_DIR$/IHaveStatistic.py" />
         <option value="$PROJECT_DIR$/LehmanRosenblatt.py" />
         <option value="$PROJECT_DIR$/ShowAllEmpiricFunctionsHelper.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/AndersonDarling.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -184,11 +186,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36220473" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36220473" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.36220473" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.36220473" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -220,53 +222,53 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="77" />
+      <option name="time" value="89" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string />
+        <expression-string>min(stats[0])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>min(stats[2])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>min(stats[1])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>max(stats[2])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>max(stats[1])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>X2.append(X1)</expression-string>
+        <expression-string>max(stats[0])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>len(X2.apend(X1))</expression-string>
+        <expression-string>stat</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>len(X2.append(X1))</expression-string>
+        <expression-string>stats.tolist().index(stat)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>len(X2)</expression-string>
+        <expression-string>stats.index(stat)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -621,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/mpmath/calculus/extrapolation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="1807" selection-start-line="1807" selection-end-line="1807" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1350837527/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -701,10 +696,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/mpmath/calculus/extrapolation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="118">
+          <caret line="1705" selection-start-line="1705" selection-end-line="1705" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ShowAllEmpiricFunctionsHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="78" column="50" lean-forward="true" selection-start-line="78" selection-start-column="50" selection-end-line="78" selection-end-column="50" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -713,30 +715,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LehmanRosenblatt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="-351">
+          <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="26" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ShowAllEmpiricFunctionsHelper.py">
+    <entry file="file://$PROJECT_DIR$/AndersonDarling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="50" column="41" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="41" />
+        <state relative-caret-position="136">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#144#173#0" />
+            <element signature="e#221#258#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndersonDarling.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+        <state relative-caret-position="278">
+          <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
