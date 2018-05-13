@@ -11,13 +11,26 @@ import AndersonDarling as ad
 
 
 class ShowAllEmpiricFunctionsHelper:
+    # @staticmethod
+    # def ShowAllEmpiricFunctionsOfSmirnovCriteria(n, m, N):
+    #     criteria = sm.SmirnovCriteria()
+    #     en = np.sqrt(n * m / float(n + m))
+    #     func = lambda x: kstwobign.cdf((en + 0.12 + 0.11 / en) * x)
+    #     plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'K-S', func)
+    #     plt.show()
+
     @staticmethod
-    def ShowAllEmpiricFunctionsOfSmirnovCriteria(n, m, N):
+    def ShowAllEmpiricFunctionsOfSmirnovCriteria(nn, mm, N):
         criteria = sm.SmirnovCriteria()
-        en = np.sqrt(n * m / float(n + m))
-        func = lambda x: kstwobign.cdf((en + 0.12 + 0.11 / en) * x)
-        plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'K-S', func)
-        plt.show()
+        n = 5
+        while n < 50:
+            m = n
+            en = np.sqrt(n * m / (n + m))
+            func = lambda x: kstwobign.cdf((en + 0.12 + 0.11 / en) * x)
+            plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'K-S', func)
+            plt.show()#пока не закроем окно, следующая итерация не будет
+            n += 5
+
 
     @staticmethod
     def ShowAllEmpiricFunctionsOfLehmRosCriteria(n, m, N):
@@ -35,6 +48,7 @@ class ShowAllEmpiricFunctionsHelper:
 
     @staticmethod
     def GetPlotsOfCriteria(n, m, N, criteria, shortName ,cdfValues):
+        print(f"n: {n}, m: {m}")
         roundingDigitsCounts = [0, 1, 2]  # количество знаков округления значений выборок
         #descriptions = (shortName, '-', '0', '1', '2')
         descriptions = (shortName, '0', '1', '2')
@@ -80,5 +94,7 @@ class ShowAllEmpiricFunctionsHelper:
             #distances.append(kstest(stat, lambda data: cdfValues(data)))
             print(f"distance by KS test: {kstest(stat, lambda data: cdfValues(data)).statistic}")
         plt.legend(labels=descriptions)
+        plt.ylabel(shortName)
+        plt.xlabel(f'n: {n}, m: {m}')
 
         return plt

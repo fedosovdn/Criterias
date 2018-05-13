@@ -66,12 +66,12 @@ def LehmRosEmpiricPlots():
     shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(20, 30, 16600)
 
 def ADEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfADCriteria(20, 30, 16600)
+    shower.ShowAllEmpiricFunctionsOfADCriteria(20, 30, 100)
 
 
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
-#SmirnovEmpiricPlots()
+SmirnovEmpiricPlots()
 #LehmRosEmpiricPlots()
-ADEmpiricPlots()
+#ADEmpiricPlots()
