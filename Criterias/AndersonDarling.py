@@ -39,7 +39,7 @@ class AndersonDarlingCriteria:
         return IHaveSatistic(sum/(m*n))
 
     @staticmethod
-    def GetStatisticDistribution(stats):
+    def GetStatisticDistribution(statistics):
         def a2(jj):
             j = float(jj)
             temp = pow((4.0*j + 1), 2)
@@ -51,7 +51,9 @@ class AndersonDarlingCriteria:
             return pow(-1, j) * res
 
         result = []
-        for stat in stats:
+        for index, stat in enumerate(statistics):
+            # if (index % 100 == 0):
+            #     print(index)
             sum = float(nsum(lambda j: a2(j), [0, inf]))
 
             st = sqrt(2*pi) / stat

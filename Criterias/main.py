@@ -60,18 +60,20 @@ def SmirnovEmpiricPlot():
     plt.show()
 
 def SmirnovEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(1000, 1000, 16600)
+    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(70, 130, 16600)
 
 def LehmRosEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(20, 30, 16600)
+    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(200, 200, 16600)
 
 def ADEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfADCriteria(20, 30, 100)
-
+    # shower.ShowAllEmpiricFunctionsOfADCriteria(30, 30, 16600)
+    # shower.ShowAllEmpiricFunctionsOfADCriteria(30, 40, 16600)
+    shower.ShowAllEmpiricFunctionsOfADCriteria(500, 500, 16600)
+    shower.ShowAllEmpiricFunctionsOfADCriteria(1000, 1000, 16600)
 
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
-SmirnovEmpiricPlots()
-#LehmRosEmpiricPlots()
-#ADEmpiricPlots()
+#SmirnovEmpiricPlots()
+# LehmRosEmpiricPlots()
+ADEmpiricPlots()

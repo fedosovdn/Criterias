@@ -8,6 +8,7 @@ from statsmodels.distributions.empirical_distribution import ECDF
 import LehmanRosenblatt as lr
 import Smirnov as sm
 import AndersonDarling as ad
+from statistics import median
 
 
 class ShowAllEmpiricFunctionsHelper:
@@ -20,17 +21,12 @@ class ShowAllEmpiricFunctionsHelper:
     #     plt.show()
 
     @staticmethod
-    def ShowAllEmpiricFunctionsOfSmirnovCriteria(nn, mm, N):
+    def ShowAllEmpiricFunctionsOfSmirnovCriteria(n, m, N):
         criteria = sm.SmirnovCriteria()
-        n = 5
-        while n < 50:
-            m = n
-            en = np.sqrt(n * m / (n + m))
-            func = lambda x: kstwobign.cdf((en + 0.12 + 0.11 / en) * x)
-            plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'K-S', func)
-            plt.show()#пока не закроем окно, следующая итерация не будет
-            n += 5
-
+        en = np.sqrt(n * m / (n + m))
+        func = lambda x: kstwobign.cdf((en + 0.12 + 0.11 / en) * x)
+        plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'K-S', func)
+        plt.show()#пока не закроем окно, следующая итерация не будет
 
     @staticmethod
     def ShowAllEmpiricFunctionsOfLehmRosCriteria(n, m, N):
@@ -44,7 +40,7 @@ class ShowAllEmpiricFunctionsHelper:
         criteria = ad.AndersonDarlingCriteria()
         func = lambda x: ad.AndersonDarlingCriteria.GetStatisticDistribution(x)
         plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'A-D', func)
-        plt.show()
+        # plt.show()
 
     @staticmethod
     def GetPlotsOfCriteria(n, m, N, criteria, shortName ,cdfValues):
@@ -54,11 +50,12 @@ class ShowAllEmpiricFunctionsHelper:
         descriptions = (shortName, '0', '1', '2')
         #stats = [[]]
         stats = []
+        diffCounts = [] # для вывода различных значений в выборках
         for digit in roundingDigitsCounts:
             stats.append([])
+            diffCounts.append([])
 
         nToDisplayUnique = []#чтобы вывести количество уникальных значений
-        diffCounts = ""#для вывода различных значений в выборках
         count = 10
         for i in range(count):
             nToDisplayUnique.append(N//count*i)
@@ -74,24 +71,20 @@ class ShowAllEmpiricFunctionsHelper:
                 x1_rounded = Helper.RoundingArray(x1, digit)
                 x2_rounded = Helper.RoundingArray(x2, digit)
                 if i in nToDisplayUnique:
-                    diffCounts += f"{len(set(np.concatenate((x1_rounded, x2_rounded))))}\t"
+                    diffCounts[index].append(len(set(np.concatenate((x1_rounded, x2_rounded)))))
                 #stats[index + 1].append(criteria.Result2Samples(x1_rounded, x2_rounded).statistic)
                 stats[index].append(criteria.Result2Samples(x1_rounded, x2_rounded).statistic)
-            if i in nToDisplayUnique:
-                diffCounts += "\n"
-        print(diffCounts)
+        for diffCount in diffCounts:
+            print(median(diffCount))
 
         lines = []
         allstats = sum(stats, [])
         x = np.linspace(min(allstats), max(allstats), N)
         lines.append(plt.plot(x, cdfValues(x)))
-        #distances = []
-        #ecdfs = []
-        for stat in stats:
+        for index, stat in enumerate(stats):
+            # print(f"{index} -ый массив статистик")
             ecdf = ECDF(stat)
-            #ecdfs.append(ecdf)
             lines.append(plt.plot(ecdf.x, ecdf.y))
-            #distances.append(kstest(stat, lambda data: cdfValues(data)))
             print(f"distance by KS test: {kstest(stat, lambda data: cdfValues(data)).statistic}")
         plt.legend(labels=descriptions)
         plt.ylabel(shortName)
