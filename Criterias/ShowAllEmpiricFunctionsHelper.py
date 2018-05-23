@@ -78,16 +78,16 @@ class ShowAllEmpiricFunctionsHelper:
             print(median(diffCount))
 
         lines = []
-        allstats = sum(stats, [])
-        x = np.linspace(min(allstats), max(allstats), N)
-        lines.append(plt.plot(x, cdfValues(x)))
+        # allstats = sum(stats, [])
+        # x = np.linspace(min(allstats), max(allstats), N)
+        # lines.append(plt.plot(x, cdfValues(x)))
         for index, stat in enumerate(stats):
             # print(f"{index} -ый массив статистик")
-            ecdf = ECDF(stat)
-            lines.append(plt.plot(ecdf.x, ecdf.y))
+            # ecdf = ECDF(stat)
+            # lines.append(plt.plot(ecdf.x, ecdf.y))
             print(f"distance by KS test: {kstest(stat, lambda data: cdfValues(data)).statistic}")
-        plt.legend(labels=descriptions)
-        plt.ylabel(shortName)
-        plt.xlabel(f'n: {n}, m: {m}')
+        # plt.legend(labels=descriptions)
+        # plt.ylabel(shortName)
+        # plt.xlabel(f'n: {n}, m: {m}')
 
         return plt

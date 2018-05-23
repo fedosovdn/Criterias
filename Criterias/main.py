@@ -7,6 +7,7 @@ import xlwt
 from statsmodels.distributions.empirical_distribution import ECDF
 import matplotlib.pyplot as plt
 from ShowAllEmpiricFunctionsHelper import ShowAllEmpiricFunctionsHelper as shower
+from PowerCalculateHelper import PowerCalculateHelper as powCalc
 
 #если не задавать roundingCount значит без округления
 def EmpiricFunctionOfCriteria(n, N, criteria, roundingCount = -1):
@@ -63,17 +64,23 @@ def SmirnovEmpiricPlots():
     shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(70, 130, 16600)
 
 def LehmRosEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(200, 200, 16600)
+    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(5000, 5000, 16600)
+    # shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(500, 2000, 16600)
 
 def ADEmpiricPlots():
     # shower.ShowAllEmpiricFunctionsOfADCriteria(30, 30, 16600)
     # shower.ShowAllEmpiricFunctionsOfADCriteria(30, 40, 16600)
-    shower.ShowAllEmpiricFunctionsOfADCriteria(500, 500, 16600)
-    shower.ShowAllEmpiricFunctionsOfADCriteria(1000, 1000, 16600)
+    shower.ShowAllEmpiricFunctionsOfADCriteria(30, 30, 16600)
 
+def CalcPowers():
+    cr = ad.AndersonDarlingCriteria()
+    # cr = lr.LehmanRosenblattCriteria()
+    # cr = sm.SmirnovCriteria()
+    powCalc.CalcualteStats(100, cr)
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
 #SmirnovEmpiricPlots()
-# LehmRosEmpiricPlots()
-ADEmpiricPlots()
+LehmRosEmpiricPlots()
+# ADEmpiricPlots()
+# CalcPowers()
