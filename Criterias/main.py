@@ -76,11 +76,12 @@ def CalcPowers():
     # cr = ad.AndersonDarlingCriteria()
     cr = lr.LehmanRosenblattCriteria()
     # cr = sm.SmirnovCriteria()
-    powCalc.CalcualteStats(16600, cr)
+    # powCalc.CalcualteStats(500, 500, 16600, cr, '-')#без округления
+    powCalc.CalcualteStats(1000, 1000, 16600, cr, '-')
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
 #SmirnovEmpiricPlots()
-LehmRosEmpiricPlots()
+# LehmRosEmpiricPlots()
 # ADEmpiricPlots()
-# CalcPowers()
+CalcPowers()
