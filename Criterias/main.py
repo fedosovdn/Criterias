@@ -61,7 +61,8 @@ def SmirnovEmpiricPlot():
     plt.show()
 
 def SmirnovEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(70, 130, 16600)
+    # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(500, 500, 16600)
+    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(5000, 5000, 16600)
 
 def LehmRosEmpiricPlots():
     shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(500, 1000, 16600)
@@ -74,14 +75,15 @@ def ADEmpiricPlots():
 
 def CalcPowers():
     # cr = ad.AndersonDarlingCriteria()
-    cr = lr.LehmanRosenblattCriteria()
-    # cr = sm.SmirnovCriteria()
+    # cr = lr.LehmanRosenblattCriteria()
+    cr = sm.SmirnovCriteria()
     # powCalc.CalcualteStats(500, 500, 16600, cr, '-')#без округления
-    powCalc.CalcualteStats(1000, 1000, 16600, cr, '-')
+    powCalc.CalcualteStats(2000, 2000, 16600, cr, 1)
+    powCalc.CalcualteStats(500, 500, 16600, cr, 2)
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
-#SmirnovEmpiricPlots()
+SmirnovEmpiricPlots()
 # LehmRosEmpiricPlots()
 # ADEmpiricPlots()
-CalcPowers()
+# CalcPowers()
