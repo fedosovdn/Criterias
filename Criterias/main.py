@@ -62,7 +62,7 @@ def SmirnovEmpiricPlot():
 
 def SmirnovEmpiricPlots():
     # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(500, 500, 16600)
-    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(5000, 5000, 16600)
+    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(500, 1000, 16600)
 
 def LehmRosEmpiricPlots():
     shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(500, 1000, 16600)
