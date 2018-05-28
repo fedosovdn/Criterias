@@ -42,7 +42,7 @@ class LehmanRosenblattCriteria:
         return (first + last) / 2
 
     @staticmethod
-    def GetStatisticDistribution(stats):
+    def GetStatisticDistribution(statistics):
         def a1(jj):
             j = float(jj)
             el = (4 * j + 1)*(4 * j + 1) / 16.0 / stat
@@ -51,7 +51,7 @@ class LehmanRosenblattCriteria:
             return temp * exp(-el) * bessel if not math.isnan(bessel) else 0.0
 
         result = []
-        for stat in stats:
+        for stat in statistics:
             sum = float(nsum(lambda j: a1(j), [0, inf]))
 
             st = (1 / sqrt(2 * stat))

@@ -4,6 +4,8 @@ from pandas import Series as ser
 import numpy as np
 from statsmodels.distributions.empirical_distribution import ECDF
 from Helper import Helper
+import matplotlib.pyplot as plt
+import AndersonDarling as ad
 
 class CriteriaSide(Enum):
     left = 1
@@ -12,7 +14,7 @@ class CriteriaSide(Enum):
 
 class PowerCalculateHelper:
     @staticmethod
-    def CalcualteStats(n, m, N, criteria, digit):
+    def CalculateStats(n, m, N, criteria, digit):
         SH0 = []
         SH1 = []
         SH2 = []
@@ -27,17 +29,17 @@ class PowerCalculateHelper:
             x2_H0 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
             SH0.append(criteria.Result2Samples(x1_H0, x2_H0).statistic)
 
-            rvs = stats.norm.rvs(loc=0, scale=1, size=n)
-            x1_H1 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
-            rvs = stats.norm.rvs(loc=0.1, scale=1, size=m)
-            x2_H1 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
-            SH1.append(criteria.Result2Samples(x1_H1, x2_H1).statistic)
-
-            rvs = stats.norm.rvs(loc=0, scale=1, size=n)
-            x1_H2 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
-            rvs = stats.norm.rvs(loc=0.5, scale=1, size=m)
-            x2_H2 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
-            SH2.append(criteria.Result2Samples(x1_H2, x2_H2).statistic)
+            # rvs = stats.norm.rvs(loc=0, scale=1, size=n)
+            # x1_H1 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
+            # rvs = stats.norm.rvs(loc=0.1, scale=1, size=m)
+            # x2_H1 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
+            # SH1.append(criteria.Result2Samples(x1_H1, x2_H1).statistic)
+            #
+            # rvs = stats.norm.rvs(loc=0, scale=1, size=n)
+            # x1_H2 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
+            # rvs = stats.norm.rvs(loc=0.5, scale=1, size=m)
+            # x2_H2 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
+            # SH2.append(criteria.Result2Samples(x1_H2, x2_H2).statistic)
 
             rvs = stats.norm.rvs(loc=0, scale=1, size=n)
             x1_H3 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
@@ -57,11 +59,18 @@ class PowerCalculateHelper:
             x2_H5 = rvs if digit == '-' else Helper.RoundingArray(rvs, digit)
             SH5.append(criteria.Result2Samples(x1_H5, x2_H5).statistic)
 
-        print(PowerCalculateHelper.CalculatePower(SH0, SH1, [0.1, 0.05, 0.025]))
-        print(PowerCalculateHelper.CalculatePower(SH0, SH2, [0.1, 0.05, 0.025]))
-        print(PowerCalculateHelper.CalculatePower(SH0, SH3, [0.1, 0.05, 0.025]))
-        print(PowerCalculateHelper.CalculatePower(SH0, SH4, [0.1, 0.05, 0.025]))
-        print(PowerCalculateHelper.CalculatePower(SH0, SH5, [0.1, 0.05, 0.025]))
+        # Вычисление мощностей
+        # print(PowerCalculateHelper.CalculatePower(SH0, SH1, [0.1, 0.05, 0.025]))
+        # print(PowerCalculateHelper.CalculatePower(SH0, SH2, [0.1, 0.05, 0.025]))
+        # print(PowerCalculateHelper.CalculatePower(SH0, SH3, [0.1, 0.05, 0.025]))
+        # print(PowerCalculateHelper.CalculatePower(SH0, SH4, [0.1, 0.05, 0.025]))
+        # print(PowerCalculateHelper.CalculatePower(SH0, SH5, [0.1, 0.05, 0.025]))
+
+        # Отрисовка распределений статситик при альтернативах
+        statistics = [SH1, SH3, SH4, SH5]
+        descriptions = ['A-D', 'G(Sc|H1)', 'G(Sc|H3)', 'G(Sc|H4)', 'G(Sc|H5)']
+        func = lambda x: ad.AndersonDarlingCriteria.GetStatisticDistribution(x)
+        PowerCalculateHelper.ShowPlotsByStats(statistics, descriptions, func, 16600)
 
     @staticmethod
     def CalculatePower(statsH0, statsH1,  alphas, criteriaSide = None):
@@ -74,3 +83,16 @@ class PowerCalculateHelper:
         print()
 
         return np.ones(len(alphas)) - possibilites
+
+    @staticmethod
+    def ShowPlotsByStats(statisticsArray, descriptions, cdfValues, N):
+        lines = []
+        allstats = sum(statisticsArray, [])
+        x = np.linspace(min(allstats), max(allstats), N)
+        lines.append(plt.plot(x, cdfValues(x)))
+        for index, stat in enumerate(statisticsArray):
+            ecdf = ECDF(stat)
+            lines.append(plt.plot(ecdf.x, ecdf.y))
+        plt.legend(labels=descriptions)
+        plt.ylabel("G(Sc|H)")
+        plt.xlabel("Sc")
