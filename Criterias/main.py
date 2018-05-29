@@ -71,7 +71,10 @@ def LehmRosEmpiricPlots():
 def ADEmpiricPlots():
     # shower.ShowAllEmpiricFunctionsOfADCriteria(30, 30, 16600)
     # shower.ShowAllEmpiricFunctionsOfADCriteria(30, 40, 16600)
-    shower.ShowAllEmpiricFunctionsOfADCriteria(10, 10, 16600)
+    shower.ShowAllEmpiricFunctionsOfADCriteria(500, 500, 16600)
+    shower.ShowAllEmpiricFunctionsOfADCriteria(1000, 1000, 16600)
+    shower.ShowAllEmpiricFunctionsOfADCriteria(2000, 2000, 16600)
+    shower.ShowAllEmpiricFunctionsOfADCriteria(5000, 5000, 16600)
 
 def CalcPowers():
     cr = ad.AndersonDarlingCriteria()
@@ -85,5 +88,5 @@ def CalcPowers():
 #SmirnovEmpiricPlot()
 # SmirnovEmpiricPlots()
 # LehmRosEmpiricPlots()
-# ADEmpiricPlots()
-CalcPowers()
+ADEmpiricPlots()
+# CalcPowers()

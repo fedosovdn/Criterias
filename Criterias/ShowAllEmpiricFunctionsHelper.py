@@ -45,7 +45,7 @@ class ShowAllEmpiricFunctionsHelper:
     @staticmethod
     def GetPlotsOfCriteria(n, m, N, criteria, shortName ,cdfValues):
         print(f"n: {n}, m: {m}")
-        roundingDigitsCounts = [0, 1, 2]  # количество знаков округления значений выборок
+        roundingDigitsCounts = [1]  # количество знаков округления значений выборок
         #descriptions = (shortName, '-', '0', '1', '2')
         descriptions = (shortName, '0', '1', '2')
         #stats = [[]]
@@ -61,8 +61,8 @@ class ShowAllEmpiricFunctionsHelper:
             nToDisplayUnique.append(N//count*i)
 
         for i in range(N):
-            x1 = norm.rvs(loc=0, scale=1, size=n)
-            x2 = norm.rvs(loc=0, scale=1, size=m)
+            x1 = norm.rvs(loc=0, scale=10, size=n)
+            x2 = norm.rvs(loc=0, scale=10, size=m)
             # if i in nToDisplayUnique:
             #     diffCounts += f"{len(set(np.concatenate((x1, x2))))}\t"
             # statistic = criteria.Result2Samples(x1, x2).statistic
