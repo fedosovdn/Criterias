@@ -33,7 +33,7 @@ class ShowAllEmpiricFunctionsHelper:
         criteria = lr.LehmanRosenblattCriteria()
         func = lambda x: lr.LehmanRosenblattCriteria.GetStatisticDistribution(x)
         plt = ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'L-R', func)
-        plt.show()
+        # plt.show()
 
     @staticmethod
     def ShowAllEmpiricFunctionsOfADCriteria(n, m, N):
@@ -61,8 +61,8 @@ class ShowAllEmpiricFunctionsHelper:
             nToDisplayUnique.append(N//count*i)
 
         for i in range(N):
-            x1 = norm.rvs(loc=0, scale=10, size=n)
-            x2 = norm.rvs(loc=0, scale=10, size=m)
+            x1 = norm.rvs(loc=0, scale=50, size=n)
+            x2 = norm.rvs(loc=0, scale=50, size=m)
             # if i in nToDisplayUnique:
             #     diffCounts += f"{len(set(np.concatenate((x1, x2))))}\t"
             # statistic = criteria.Result2Samples(x1, x2).statistic
