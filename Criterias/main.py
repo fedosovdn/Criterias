@@ -66,38 +66,41 @@ def SmirnovEmpiricPlots():
     # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(1000, 1000, 16600)
     # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(2000, 2000, 16600)
     # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(5000, 5000, 16600)
-    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(10000, 10000, 16600)
+    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(261, 353, 16600)
 
 def LehmRosEmpiricPlots():
-    # shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(500, 2000, 16600)
-    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(200, 200, 16600)
-    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(1000, 1000, 16600)
-    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(2000, 2000, 16600)
-    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(5000, 5000, 16600)
+    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(200, 200, 16600, 0, 2)
+    # shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(1000, 1000, 16600)
+    # shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(2000, 2000, 16600)
+    # shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(5000, 5000, 16600)
 
 def ADEmpiricPlots():
     # shower.ShowAllEmpiricFunctionsOfADCriteria(30, 30, 16600)
     # shower.ShowAllEmpiricFunctionsOfADCriteria(30, 40, 16600)
-    shower.ShowAllEmpiricFunctionsOfADCriteria(500, 500, 16600)
     shower.ShowAllEmpiricFunctionsOfADCriteria(1000, 1000, 16600)
-    shower.ShowAllEmpiricFunctionsOfADCriteria(2000, 2000, 16600)
-    shower.ShowAllEmpiricFunctionsOfADCriteria(5000, 5000, 16600)
+    # shower.ShowAllEmpiricFunctionsOfADCriteria(1000, 1000, 16600)
+    # shower.ShowAllEmpiricFunctionsOfADCriteria(2000, 2000, 16600)
+    # shower.ShowAllEmpiricFunctionsOfADCriteria(5000, 5000, 16600)
 
 def CalcPowers():
-    cr = ad.AndersonDarlingCriteria()
-    # cr = lr.LehmanRosenblattCriteria()
+    # cr = ad.AndersonDarlingCriteria()
+    cr = lr.LehmanRosenblattCriteria()
     # cr = sm.SmirnovCriteria()
     # powCalc.CalcualteStats(500, 500, 16600, cr, '-')#без округления
     # powCalc.CalcualteStats(2000, 2000, 16600, cr, 1)
-    powCalc.CalculateStats(500, 500, 16600, cr, 0)
+    powCalc.CalculateStats(200, 200, 16600, cr, 0)
 
 def ShowDistrPlots():
     powCalc.ShowDistrPlots(500, 0)
+
+def ShowTheorDistrs():
+    powCalc.ShowTheorDistrs()
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
 # SmirnovEmpiricPlots()
 # LehmRosEmpiricPlots()
-# ADEmpiricPlots()
+ADEmpiricPlots()
 # CalcPowers()
-ShowDistrPlots()
+# ShowDistrPlots()
+# ShowTheorDistrs()
