@@ -69,7 +69,7 @@ def SmirnovEmpiricPlots():
     shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(261, 353, 16600)
 
 def LehmRosEmpiricPlots():
-    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(200, 200, 16600, 0, 2)
+    shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(10000, 10000, 16600, 0, 1)
     # shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(1000, 1000, 16600)
     # shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(2000, 2000, 16600)
     # shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(5000, 5000, 16600)
@@ -99,8 +99,8 @@ def ShowTheorDistrs():
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
 # SmirnovEmpiricPlots()
-# LehmRosEmpiricPlots()
-ADEmpiricPlots()
+LehmRosEmpiricPlots()
+# ADEmpiricPlots()
 # CalcPowers()
 # ShowDistrPlots()
 # ShowTheorDistrs()

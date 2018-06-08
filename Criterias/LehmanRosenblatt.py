@@ -22,14 +22,15 @@ class LehmanRosenblattCriteria:
         # X1 = X1.tolist()
         # X2 = X2.tolist()
         sum1 = 0
-        for i in range(m):
-            elem = X1[i]
-            sum1 += pow(self.rangOfRepeatingElems(dataAll, elem) - i, 2)
+        for i, elem in enumerate(X1):
+            # elem = X1[i]
+            # sum1 += pow(self.rangOfRepeatingElems(dataAll, elem) - i, 2)
+            sum1 += pow(Helper.GetRang(dataAll, elem) - i, 2)
 
         sum2 = 0
-        for i in range(n):
-            elem = X2[i]
-            sum2 += pow(self.rangOfRepeatingElems(dataAll, elem) - i, 2)
+        for i, elem in enumerate(X2):
+            # elem = X2[i]
+            sum2 += pow(Helper.GetRang(dataAll, elem) - i, 2)
 
         stat = (n * sum2 + m * sum1)/(m*n*sum0) - (4*m*n - 1) / (6 * sum0)
         return IHaveSatistic(stat if stat != 0 else 1E-15)#иногда статистика получается равна 0, не должно быть такого
