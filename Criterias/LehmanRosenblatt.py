@@ -4,7 +4,6 @@ from IHaveStatistic import IHaveSatistic
 from scipy.special import iv
 from mpmath import nsum, inf, exp, gamma
 from math import sqrt
-
 import math
 
 
@@ -19,28 +18,16 @@ class LehmanRosenblattCriteria:
         dataAll.sort()
         dataAll = dataAll.tolist()
 
-        # X1 = X1.tolist()
-        # X2 = X2.tolist()
         sum1 = 0
         for i, elem in enumerate(X1):
-            # elem = X1[i]
-            # sum1 += pow(self.rangOfRepeatingElems(dataAll, elem) - i, 2)
             sum1 += pow(Helper.GetRang(dataAll, elem) - i, 2)
 
         sum2 = 0
         for i, elem in enumerate(X2):
-            # elem = X2[i]
             sum2 += pow(Helper.GetRang(dataAll, elem) - i, 2)
 
         stat = (n * sum2 + m * sum1)/(m*n*sum0) - (4*m*n - 1) / (6 * sum0)
         return IHaveSatistic(stat if stat != 0 else 1E-15)#иногда статистика получается равна 0, не должно быть такого
-        #return IHaveSatistic(stat)
-
-    #Индекс повторяющихся элементов
-    def rangOfRepeatingElems(self, variationalSeries, value):
-        first = variationalSeries.index(value)
-        last = Helper.GetLastIndexOf(variationalSeries, value)
-        return (first + last) / 2
 
     @staticmethod
     def GetStatisticDistribution(statistics):

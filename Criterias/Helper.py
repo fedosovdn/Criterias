@@ -6,6 +6,7 @@ class Helper:
     def GetLastIndexOf(list, value):
         return len(list) - list[::-1].index(value) - 1
 
+    '''Получить ранг элемента вариационного ряда'''
     @staticmethod
     def GetRang(list, value):
         first = list.index(value)
@@ -22,6 +23,5 @@ class Helper:
         # getcontext().rounding = ROUND_HALF_UP
         result = []
         for elem in array:
-            #result.append(format(elem, f".{digitCount}f"))
             result.append(round(Decimal(elem), digitCount))
         return result

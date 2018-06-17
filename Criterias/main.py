@@ -8,6 +8,8 @@ from statsmodels.distributions.empirical_distribution import ECDF
 import matplotlib.pyplot as plt
 from ShowAllEmpiricFunctionsHelper import ShowAllEmpiricFunctionsHelper as shower
 from PowerCalculateHelper import PowerCalculateHelper as powCalc
+import numpy as np
+from scipy.stats import kstwobign
 
 #если не задавать roundingCount значит без округления
 def EmpiricFunctionOfCriteria(n, N, criteria, roundingCount = -1):
@@ -66,7 +68,19 @@ def SmirnovEmpiricPlots():
     # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(1000, 1000, 16600)
     # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(2000, 2000, 16600)
     # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(5000, 5000, 16600)
-    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(261, 353, 16600)
+
+    # x = np.linspace(0.1, 10, 16600)
+    # plt.plot(x, kstwobign.cdf(x))
+    # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(200, 200, 16600)
+    # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(500, 500, 16600)
+    # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(999, 1001, 16600)
+    shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(499, 1501, 16600)
+    # shower.ShowAllEmpiricFunctionsOfSmirnovCriteria(5000, 5000, 16600)
+
+    # plt.ylabel("G(Sc|H0)")
+    # plt.xlabel("Sc")
+    # plt.legend(labels=('K-S', 'n=m=200', 'n=m=500', 'n=m=1000', 'n=m=2000', 'n=m=5000'))
+    # plt.show()
 
 def LehmRosEmpiricPlots():
     shower.ShowAllEmpiricFunctionsOfLehmRosCriteria(10000, 10000, 16600, 0, 1)
@@ -98,8 +112,8 @@ def ShowTheorDistrs():
 
 #GetStatisticsValueByRoundedSeries()
 #SmirnovEmpiricPlot()
-# SmirnovEmpiricPlots()
-LehmRosEmpiricPlots()
+SmirnovEmpiricPlots()
+# LehmRosEmpiricPlots()
 # ADEmpiricPlots()
 # CalcPowers()
 # ShowDistrPlots()

@@ -46,7 +46,6 @@ class AndersonDarlingCriteria:
             temp2 = 8*stat
             res = gamma(j + 0.5)*(4.0*j + 1)/(gamma(0.5)*gamma(j + 1.0))
             res *= exp(-temp*pi*pi/temp2)
-            #интеграл долго считается
             res *= integrate.quad(lambda y: exp((stat / (8*(y*y+1))) - temp*pi*pi*y*y/temp2), 0, np.inf)[0]
             return pow(-1, j) * res
 

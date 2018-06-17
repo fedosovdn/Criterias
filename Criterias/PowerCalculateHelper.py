@@ -1,17 +1,10 @@
-from enum import Enum
 import scipy.stats as stats
 from pandas import Series as ser
 import numpy as np
 from statsmodels.distributions.empirical_distribution import ECDF
 from Helper import Helper
 import matplotlib.pyplot as plt
-import AndersonDarling as ad
 import LehmanRosenblatt as lr
-
-class CriteriaSide(Enum):
-    left = 1
-    right = 2
-    both = 3
 
 class PowerCalculateHelper:
     @staticmethod
@@ -141,9 +134,9 @@ class PowerCalculateHelper:
         plt.plot(x, stats.logistic.cdf(x, loc=0, scale=1))
 
         plt.legend(labels=descriptions)
+        plt.annotate('frffr', xy=(1, 0.5), xytext=(-3, 1))
         plt.ylabel("F(x|H)")
         plt.xlabel("x")
-        plt.show()
         plt.show()
 
     @staticmethod
