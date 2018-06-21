@@ -15,7 +15,7 @@ class ShowAllEmpiricFunctionsHelper:
     @staticmethod
     def ShowAllEmpiricFunctionsOfSmirnovCriteria(n, m, N, loc=0, scale=1):
         criteria = sm.SmirnovCriteria()
-        en = np.sqrt(n * m / (n + m))
+        # en = np.sqrt(n * m / (n + m))
         # func = lambda x: kstwobign.cdf((en + 0.12 + 0.11 / en) * x)
         func = lambda x: kstwobign.cdf(x)
         # func = lambda x: kstwobign.cdf(en * x)
@@ -33,8 +33,8 @@ class ShowAllEmpiricFunctionsHelper:
     def ShowAllEmpiricFunctionsOfADCriteria(n, m, N, loc=0, scale=1):
         criteria = ad.AndersonDarlingCriteria()
         func = lambda x: ad.AndersonDarlingCriteria.GetStatisticDistribution(x)
-        ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'A-D', func, loc, scale)
-        # ShowAllEmpiricFunctionsHelper.GetKolmogorovDistancesOfCriteria(n, m, N, criteria, func, loc, scale)
+        # ShowAllEmpiricFunctionsHelper.GetPlotsOfCriteria(n, m, N, criteria, 'A-D', func, loc, scale)
+        ShowAllEmpiricFunctionsHelper.GetKolmogorovDistancesOfCriteria(n, m, N, criteria, func, loc, scale)
 
     @staticmethod
     def GetKolmogorovDistancesOfCriteria(n, m, N, criteria, cdfValues, loc, scale):
@@ -62,6 +62,7 @@ class ShowAllEmpiricFunctionsHelper:
                 if i in nToDisplayUnique:
                     diffCounts[index].append(len(set(np.concatenate((x1_rounded, x2_rounded)))))
                 stats[index].append((en + 0.12 + 0.11 / en) * criteria.Result2Samples(x1_rounded, x2_rounded).statistic)
+                # stats[index].append(criteria.Result2Samples(x1_rounded, x2_rounded).statistic)
         for diffCount in diffCounts:
             print(median(diffCount))
 
